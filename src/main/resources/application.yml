@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:db
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+logging:
+  level:
+    perf-mon-log: DEBUG
+    org:
+      hibernate:
+        stat: DEBUG
+        type: DEBUG
+      springframework:
+        security: DEBUG
+        web: DEBUG
+  file:
+    path: /tmp/logs/api_user_management.log
+
+regex:
+  email: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$"
+
+jwt:
+  # 32-byte (256-bit) random value in hexadecimal format: openssl rand -hex 32
+  secret: "f37c75591c6ca2e8ee650f09f275086ec822986ac19f4d69a812c2e3c199065f"
+  expiration: 720  # 1 month
